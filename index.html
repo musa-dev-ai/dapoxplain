@@ -187,12 +187,9 @@
 
 
    <!-- Hero Section -->
-<section id="home" class="relative min-h-screen w-full overflow-hidden">
-  <!-- Dark overlay -->
-  <div class="absolute inset-0 bg-black/40 z-10"></div>
+<section id="home" class="relative w-full h-screen overflow-hidden">
 
   <!-- Fullscreen Video Background with Fallback Image -->
-<div class="relative w-full h-screen overflow-hidden">
   <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
     <source src="7578541-hd_1920_1080_30fps.webm" type="video/webm">
     <source src="7578541-hd_1920_1080_30fps.mp4" type="video/mp4">
@@ -202,12 +199,12 @@
   <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1470&q=80" 
        class="absolute inset-0 w-full h-full object-cover md:hidden" 
        alt="Hero Background">
-</div>
 
-
+  <!-- Dark Overlay -->
+  <div class="absolute inset-0 bg-black/40"></div>
 
   <!-- Hero Content -->
-  <div class="relative z-20 flex flex-col items-center justify-center min-h-screen text-center px-6">
+  <div class="relative z-20 flex flex-col items-center justify-center h-full text-center px-6">
     <h1 class="text-4xl md:text-6xl font-bold text-white mb-6" data-aos="fade-up">
       Where Trust Meets Luxury
     </h1>
@@ -223,6 +220,7 @@
       </a>
     </div>
   </div>
+
 </section>
 
 
