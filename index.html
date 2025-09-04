@@ -145,7 +145,7 @@
   </div>
 </div>
 
-<!-- Script -->
+<!-- Script
 <script>
   const menu = document.getElementById("mobile-menu");
   const openBtn = document.getElementById("open-menu");
@@ -183,7 +183,7 @@
     });
   });
 </script>
-
+ -->
 
 
    <!-- Hero Section -->
@@ -848,44 +848,47 @@
     </svg>
 
     <script>
-  // JavaScript Loader + AOS Initialization
-window.addEventListener('load', function () {
-  const loader = document.getElementById('loader');
-  
-  if (loader) {
-    // Start fade out
-    loader.style.transition = "opacity 0.6s ease";
-    loader.style.opacity = '0';
+  // Hide loader once DOM is ready (don’t wait for iframes like Google Maps)
+  document.addEventListener('DOMContentLoaded', function () {
+    const loader = document.getElementById('loader');
+    if (loader) {
+      setTimeout(() => {
+        loader.style.transition = "opacity 0.6s ease";
+        loader.style.opacity = '0';
+        setTimeout(() => {
+          loader.style.display = 'none';
+        }, 600);
+      }, 500); // keep loader visible for at least 0.5s
+    }
 
-    // Remove loader from layout after fade
-    setTimeout(() => {
-      loader.style.display = 'none';
-    }, 600); // match transition duration
-  }
+    // Initialize AOS animations
+    if (typeof AOS !== 'undefined') {
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true
+      });
+    }
+  });
 
-  // Initialize AOS animations
-  if (typeof AOS !== 'undefined') {
-    AOS.init({
-      duration: 800,
-      easing: 'ease-in-out',
-      once: true
-    });
-  }
-});
-
+  // Safety kill-switch: hide loader after 5s no matter what
+  setTimeout(() => {
+    const loader = document.getElementById('loader');
+    if (loader) loader.style.display = 'none';
+  }, 5000);
 
   // Mobile Menu Toggle
-  document.getElementById('mobile-menu-button').addEventListener('click', function () {
+  document.getElementById('mobile-menu-button')?.addEventListener('click', function () {
     document.getElementById('mobile-menu').classList.remove('hidden');
   });
 
-  document.getElementById('close-menu').addEventListener('click', function () {
+  document.getElementById('close-menu')?.addEventListener('click', function () {
     document.getElementById('mobile-menu').classList.add('hidden');
   });
 
   // Close mobile menu when clicking a link
   document.querySelectorAll('#mobile-menu a').forEach(link => {
-    link.addEventListener('click', function () {
+    link.addEventListener('click', () => {
       document.getElementById('mobile-menu').classList.add('hidden');
     });
   });
@@ -904,14 +907,9 @@ window.addEventListener('load', function () {
     }
   });
 
-  if (document.getElementById('back-to-top')) {
-    document.getElementById('back-to-top').addEventListener('click', function () {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-  }
+  document.getElementById('back-to-top')?.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 
   // Animated Counters with commas and optional "+"
   function animateCounter(counter) {
@@ -965,10 +963,13 @@ window.addEventListener('load', function () {
     });
   });
 
-  // Feather icons
-  feather.replace();
+  // Feather icons (⚠️ replace unsupported icons like facebook, twitter, etc.)
+  try {
+    feather.replace();
+  } catch (e) {
+    console.warn("Feather icons failed:", e);
+  }
 </script>
 
-    </script>
 </body>
 </html>
