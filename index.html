@@ -79,14 +79,14 @@
 <style>/* responsive reset */ html,body{max-width:100%;overflow-x:hidden}</style>
 </head>
 <body class="bg-white text-gray-800">
-    <!-- Loader Animation -->
+    <!-- Loader Animation
     <div id="loader" class="fixed inset-0 z-50 flex items-center justify-center bg-white">
         <div class="text-center">
             <h1 class="text-xl sm:text-2xl sm:text-3xl md:text-4xl sm:text-4xl md:text-5xl sm:text-5xl md:text-7xl font-bold gradient-text animate-pulse">Dapoxplain</h1>
 
             <p class="mt-4 text-gray-600">Housing services</p>
         </div>
-    </div>
+    </div> -->
 
     <!-- Navigation -->
     <nav class="fixed w-full z-40 bg-white/90 backdrop-blur-md shadow-sm">
@@ -848,18 +848,18 @@
     </svg>
 
     <script>
-        // Loader Animation
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.getElementById('loader').style.opacity = '0';
-                document.getElementById('loader').style.visibility = 'hidden';
-                AOS.init({
-                    duration: 800,
-                    easing: 'ease-in-out',
-                    once: true
-                });
-            }, 1500);
-        });
+        // // Loader Animation
+        // window.addEventListener('load', function() {
+        //     setTimeout(function() {
+        //         document.getElementById('loader').style.opacity = '0';
+        //         document.getElementById('loader').style.visibility = 'hidden';
+        //         AOS.init({
+        //             duration: 800,
+        //             easing: 'ease-in-out',
+        //             once: true
+        //         });
+        //     }, 1500);
+        // });
 
         // Mobile Menu Toggle
         document.getElementById('mobile-menu-button').addEventListener('click', function() {
